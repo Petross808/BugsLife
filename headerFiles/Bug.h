@@ -14,22 +14,28 @@ using namespace std;
 class Bug {
 public:
     enum Direction { NORTH, EAST, SOUTH, WEST };
-    Bug(int id, int x, int y, Direction direction, int size);
+    Bug(string type, int id, int x, int y, Direction direction, int size);
     int getId() const;
     string getPosition() const;
     int getSize() const;
     Direction getDirection() const;
     string getStatus() const;
+    void setDiedTo(int id);
     virtual string getOutputString() const = 0;
     friend std::ostream& operator<<(std::ostream& out, const Bug& bug);
+
+    virtual void move() = 0;
+    void displayHistory() const;
+
 protected:
+    string type;
     int id;
     pair<int, int> position;
     Direction direction;
     int size;
     bool alive;
     list<pair<int, int>> path;
-    virtual void move() = 0;
+    int diedTo;
     bool isWayBlocked();
 };
 

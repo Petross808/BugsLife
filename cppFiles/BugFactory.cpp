@@ -18,15 +18,16 @@ Bug* BugFactory::createBug(std::string &bugRecord) {
     int x = stoi(splitString[2]);
     int y = stoi(splitString[3]);
     int dir = stoi(splitString[4]);
-    int attr1 = stoi(splitString[5]);
+    int size = stoi(splitString[5]);
 
     if(splitString[0] == "C")
     {
-        return new Crawler(id, x, y, Bug::Direction(dir-1), attr1);
+        return new Crawler("Crawler", id, x, y, Bug::Direction(dir - 1), size);
     }
     else if (splitString[0] == "H") {
-        int attr2 = stoi(splitString[6]);
-        return new Hopper(id, x, y, Bug::Direction(dir - 1), attr2, attr1);
+        int hopLength = stoi(splitString[6]);
+        return new Hopper("Hopper", id, x, y, Bug::Direction(dir - 1), size, hopLength);
     }
+
 
 }

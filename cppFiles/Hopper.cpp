@@ -4,7 +4,7 @@
 
 #include "../headerFiles/Hopper.h"
 
-Hopper::Hopper(int id, int x, int y, Bug::Direction direction, int size, int hopLength) : Bug(id,x,y,direction,size)
+Hopper::Hopper(string type, int id, int x, int y, Bug::Direction direction, int size, int hopLength) : Bug(type,id,x,y,direction,size)
 {
     this->hopLength = hopLength;
 };

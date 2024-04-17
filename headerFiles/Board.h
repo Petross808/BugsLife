@@ -12,13 +12,16 @@
 class Board {
 private:
     vector<Bug*> bugs;
-    Bug* grid[10][10];
+    vector<Bug*> grid[10][10];
 
     void setCell(Bug*);
 public:
     void loadBugs(const std::string &filePath);
-    void displayBugs();
+    void displayBugs() const;
     Bug* readCell() const;
+    void findBug(int id) const;
+    void tapBoard();
+    void displayHistoryAll() const;
 };
 
 

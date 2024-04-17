@@ -11,7 +11,7 @@ class Hopper : public Bug {
 private:
     int hopLength;
 public:
-    Hopper(int id, int x, int y, Direction direction, int size, int hopLength);
+    Hopper(string type, int id, int x, int y, Direction direction, int size, int hopLength);
     void move() override;
     int getHopLength() const;
     virtual string getOutputString() const override;
