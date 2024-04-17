@@ -3,8 +3,10 @@
 //
 
 #include "../headerFiles/Hopper.h"
+#include <string>
+#include <utility>
 
-Hopper::Hopper(string type, int id, int x, int y, Bug::Direction direction, int size, int hopLength) : Bug(type,id,x,y,direction,size)
+Hopper::Hopper(string type, int id, int x, int y, Bug::Direction direction, int size, int hopLength) : Bug(std::move(type),id,x,y,direction,size)
 {
     this->hopLength = hopLength;
 };
@@ -20,6 +22,5 @@ int Hopper::getHopLength() const
 
 string Hopper::getOutputString() const
 {
-    return to_string(getId()) + " H " + getPosition() + " " + to_string(getSize()) +
-           " " + to_string(getDirection()) + " " + to_string(getHopLength()) + " " + getStatus();
+    return Bug::getOutputString() + " " + to_string(getHopLength());
 }

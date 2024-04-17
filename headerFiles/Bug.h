@@ -5,27 +5,26 @@
 #ifndef BUGSLIFE_BUG_H
 #define BUGSLIFE_BUG_H
 
-#include "utility"
-#include "list"
-#include "ostream"
-
+#include <list>
+#include <string>
 using namespace std;
 
 class Bug {
 public:
     enum Direction { NORTH, EAST, SOUTH, WEST };
     Bug(string type, int id, int x, int y, Direction direction, int size);
+    string getType() const;
     int getId() const;
-    string getPosition() const;
+    pair<int, int> getPosition() const;
     int getSize() const;
     Direction getDirection() const;
     string getStatus() const;
     void setDiedTo(int id);
-    virtual string getOutputString() const = 0;
+    virtual string getOutputString() const;
     friend std::ostream& operator<<(std::ostream& out, const Bug& bug);
 
     virtual void move() = 0;
-    void displayHistory() const;
+    string getHistory() const;
 
 protected:
     string type;

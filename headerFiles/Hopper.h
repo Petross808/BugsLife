@@ -14,7 +14,7 @@ public:
     Hopper(string type, int id, int x, int y, Direction direction, int size, int hopLength);
     void move() override;
     int getHopLength() const;
-    virtual string getOutputString() const override;
+    string getOutputString() const override;
 };
 
 

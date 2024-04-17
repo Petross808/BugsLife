@@ -12,7 +12,6 @@ class Crawler : public Bug {
 public:
     using Bug::Bug;
     void move() override;
-    virtual string getOutputString() const override;
 };
 
 

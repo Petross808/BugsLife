@@ -6,7 +6,7 @@
 #include "../headerFiles/Bug.h"
 
 Bug::Bug(string type, int id, int x, int y, Bug::Direction direction, int size) {
-    this->type = type;
+    this->type = std::move(type);
     this->id = id;
     this->position = pair<int, int>(x,y);
     this->direction = direction;
@@ -19,14 +19,19 @@ bool Bug::isWayBlocked() {
     return false;
 }
 
+string Bug::getType() const
+{
+    return this->type;
+}
+
 int Bug::getId() const
 {
     return this->id;
 }
 
-string Bug::getPosition() const
+pair<int, int> Bug::getPosition() const
 {
-    return "(" + to_string(this->position.first) + ", " + to_string(this->position.second) + ")";
+    return position;
 }
 
 int Bug::getSize() const
@@ -50,18 +55,25 @@ std::ostream& operator<<(std::ostream& out, const Bug& bug)
     return out;
 }
 
-void Bug::displayHistory() const {
-    cout << id << " " << type << " Path: ";
+string Bug::getOutputString() const
+{
+    return to_string(getId()) + " " + getType()[0] + " (" + to_string(getPosition().first) + ", " + to_string(getPosition().second) + ") " + to_string(getSize()) +
+           " " + to_string(getDirection()) + " " + getStatus();
+}
+
+string Bug::getHistory() const {
+    string out = to_string(id) + " " + type + " Path: ";
     for(auto pos: path)
     {
-        cout << "(" << pos.first << ", " << pos.second << "), ";
+        out += "(" + to_string(pos.first) + ", " + to_string(pos.second) + "), ";
     }
     if(alive)
     {
-        cout << "Alive!" << endl;
+        out += "Alive!";
     }
     else
     {
-        cout << "Eaten by " << diedTo << endl;
+        out += "Eaten by " + to_string(diedTo);
     }
+    return out;
 }

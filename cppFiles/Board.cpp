@@ -19,6 +19,14 @@ void Board::loadBugs(const string& filePath) {
     in.close();
 }
 
+void Board::placeBugs()
+{
+    for(Bug* bug : this->bugs)
+    {
+        grid[bug->getPosition().second][bug->getPosition().first].push_back(bug);
+    }
+}
+
 void Board::displayBugs() const {
     cout << "Bugs:" << endl;
     for(Bug* bug : this->bugs)
@@ -49,7 +57,42 @@ void Board::tapBoard() {
 void Board::displayHistoryAll() const {
     for(Bug* bug : this->bugs)
     {
-        bug->displayHistory();
+        cout << bug->getHistory() << endl;
+    }
+}
+
+void Board::endSimulation() {
+    ofstream out("../bugs_life_history_date_time.out");
+    for(Bug* bug : this->bugs)
+    {
+        out << bug->getHistory() << endl;
+    }
+    out.flush();
+    out.close();
+}
+
+void Board::displayAllCells() const {
+    for(int y = 0; y < 10; y++)
+    {
+        for(int x = 0; x < 10; x++)
+        {
+            cout << "(" << x << ", " << y << "): ";
+            size_t amount = grid[y][x].size();
+            if(amount > 0)
+            {
+                bool first = true;
+                for(Bug* bug : grid[y][x])
+                {
+                    cout << (first ? "" : ", ") << bug->getType() << " " << bug->getId();
+                    first = false;
+                }
+            }
+            else
+            {
+                cout << "empty";
+            }
+            cout << endl;
+        }
     }
 }
 

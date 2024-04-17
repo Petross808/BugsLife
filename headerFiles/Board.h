@@ -14,14 +14,15 @@ private:
     vector<Bug*> bugs;
     vector<Bug*> grid[10][10];
 
-    void setCell(Bug*);
 public:
     void loadBugs(const std::string &filePath);
+    void placeBugs();
     void displayBugs() const;
-    Bug* readCell() const;
     void findBug(int id) const;
     void tapBoard();
     void displayHistoryAll() const;
+    void endSimulation();
+    void displayAllCells() const;
 };
 
 
