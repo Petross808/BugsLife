@@ -7,3 +7,9 @@
 void Crawler::move() {
 
 }
+
+string Crawler::getOutputString() const
+{
+    return to_string(getId()) + " C " + getPosition() + " " + to_string(getSize()) +
+           " " + to_string(getDirection()) + " " + getStatus();
+}

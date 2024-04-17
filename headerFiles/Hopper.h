@@ -5,12 +5,16 @@
 #ifndef BUGSLIFE_HOPPER_H
 #define BUGSLIFE_HOPPER_H
 
+#include "Bug.h"
 
-class Hopper {
+class Hopper : public Bug {
 private:
     int hopLength;
 public:
-    void move();
+    Hopper(int id, int x, int y, Direction direction, int size, int hopLength);
+    void move() override;
+    int getHopLength() const;
+    virtual string getOutputString() const override;
 };
 
 

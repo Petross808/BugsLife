@@ -1,6 +1,8 @@
 #include <iostream>
+#include "../headerFiles/Board.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    Board board;
+    board.loadBugs("../bugs.txt");
+    board.displayBugs();
 }

@@ -8,9 +8,11 @@
 
 #include "Bug.h"
 
-class Crawler : Bug {
+class Crawler : public Bug {
 public:
-    void move();
+    using Bug::Bug;
+    void move() override;
+    virtual string getOutputString() const override;
 };
 
 
