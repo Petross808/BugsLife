@@ -5,22 +5,21 @@
 #ifndef BUGSLIFE_BOARD_H
 #define BUGSLIFE_BOARD_H
 
-#include "vector"
 #include "Bug.h"
-#include "string";
+#include "string"
+#include "vector"
 
 class Board {
 private:
     vector<Bug*> bugs;
-    vector<Bug*> grid[10][10];
-
 public:
     void loadBugs(const std::string &filePath);
-    void placeBugs();
     void displayBugs() const;
     void findBug(int id) const;
     void tapBoard();
+    void evaluateFights();
     void displayHistoryAll() const;
+    void runSimulation();
     void endSimulation();
     void displayAllCells() const;
 };

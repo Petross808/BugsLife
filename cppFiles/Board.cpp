@@ -6,6 +6,7 @@
 #include "../headerFiles/BugFactory.h"
 #include "fstream"
 #include "iostream"
+#include "algorithm"
 
 void Board::loadBugs(const string& filePath) {
     ifstream in(filePath);
@@ -17,14 +18,6 @@ void Board::loadBugs(const string& filePath) {
         this->bugs.push_back(newBug);
     }
     in.close();
-}
-
-void Board::placeBugs()
-{
-    for(Bug* bug : this->bugs)
-    {
-        grid[bug->getPosition().second][bug->getPosition().first].push_back(bug);
-    }
 }
 
 void Board::displayBugs() const {
@@ -71,28 +64,29 @@ void Board::endSimulation() {
     out.close();
 }
 
-void Board::displayAllCells() const {
-    for(int y = 0; y < 10; y++)
+void Board::evaluateFights() {
+    std::sort(bugs.begin(), bugs.end(),Bug::bugCompare);
+
+    Bug* currentAlpha;
+    pair<int,int> currentPos = {-1,-1};
+
+    for(Bug* bug : this->bugs)
     {
-        for(int x = 0; x < 10; x++)
+        if(!bug->getStatus())
+            continue;
+
+        if(currentPos != bug->getPosition())
         {
-            cout << "(" << x << ", " << y << "): ";
-            size_t amount = grid[y][x].size();
-            if(amount > 0)
-            {
-                bool first = true;
-                for(Bug* bug : grid[y][x])
-                {
-                    cout << (first ? "" : ", ") << bug->getType() << " " << bug->getId();
-                    first = false;
-                }
-            }
-            else
-            {
-                cout << "empty";
-            }
-            cout << endl;
+            currentAlpha = bug;
+            currentPos = bug->getPosition();
+        }
+        else
+        {
+            currentAlpha->killBug(*bug);
         }
     }
 }
 
+void Board::displayAllCells() const {}
+
+void Board::runSimulation() {}

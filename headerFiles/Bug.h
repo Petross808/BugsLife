@@ -18,13 +18,17 @@ public:
     pair<int, int> getPosition() const;
     int getSize() const;
     Direction getDirection() const;
-    string getStatus() const;
+    bool getStatus() const;
+    void setStatus(bool status);
     void setDiedTo(int id);
     virtual string getOutputString() const;
     friend std::ostream& operator<<(std::ostream& out, const Bug& bug);
 
     virtual void move() = 0;
     string getHistory() const;
+    void killBug(Bug& food);
+
+    static bool bugCompare(Bug*, Bug*);
 
 protected:
     string type;
@@ -36,6 +40,7 @@ protected:
     list<pair<int, int>> path;
     int diedTo;
     bool isWayBlocked();
+    pair<pair<int, int>,int> calculateNewPosition(int deltaForward);
 };
 
 
