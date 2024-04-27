@@ -115,11 +115,11 @@ pair<pair<int, int>, int> Bug::calculateNewPosition(const int deltaForward) {
 bool Bug::bugCompare(Bug* bug1, Bug* bug2) {
     if(bug1->getPosition() < bug2->getPosition())
     {
-        return false;
+        return true;
     }
     else if(bug1->getPosition() > bug2->getPosition())
     {
-        return true;
+        return false;
     }
     else if(bug1->getSize() < bug2->getSize())
     {

@@ -21,7 +21,7 @@ public:
     void displayHistoryAll() const;
     void runSimulation();
     void endSimulation();
-    void displayAllCells() const;
+    void displayAllCells();
 };
 
 

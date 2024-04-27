@@ -45,6 +45,7 @@ void Board::tapBoard() {
     {
         bug->move();
     }
+    evaluateFights();
 }
 
 void Board::displayHistoryAll() const {
@@ -87,6 +88,24 @@ void Board::evaluateFights() {
     }
 }
 
-void Board::displayAllCells() const {}
+void Board::displayAllCells() {
+    std::sort(bugs.begin(), bugs.end(), Bug::bugCompare);
+    auto nextBug = bugs.begin();
+    pair<int, int> currentPos = {-1,-1};
+    for(int x = 0; x < 10; x++)
+    {
+        for(int y = 0; y < 10; y++)
+        {
+            cout << "(" << x << ", " << y << "):";
+            currentPos = {x,y};
+            while(nextBug != bugs.end() && (*nextBug)->getPosition() == currentPos)
+            {
+                cout << " (" << (*nextBug)->getId() << " " << (*nextBug)->getType() << ")";
+                nextBug++;
+            }
+            cout << endl;
+        }
+    }
+}
 
 void Board::runSimulation() {}
