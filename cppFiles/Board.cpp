@@ -43,7 +43,7 @@ void Board::findBug(int id) const {
 void Board::tapBoard() {
     for(Bug* bug : this->bugs)
     {
-        bug->move();
+        bug->letBugDoBugThing();
     }
     evaluateFights();
 }
@@ -53,6 +53,7 @@ void Board::displayHistoryAll() const {
     {
         cout << bug->getHistory() << endl;
     }
+    cout << endl;
 }
 
 void Board::endSimulation() {
@@ -83,7 +84,15 @@ void Board::evaluateFights() {
         }
         else
         {
-            currentAlpha->killBug(*bug);
+            if(currentAlpha->getSize() == bug->getSize() && rand()%2)
+            {
+                bug->killBug(*currentAlpha);
+                currentAlpha = bug;
+            }
+            else
+            {
+                currentAlpha->killBug(*bug);
+            }
         }
     }
 }
@@ -108,4 +117,31 @@ void Board::displayAllCells() {
     }
 }
 
-void Board::runSimulation() {}
+void Board::runSimulation()
+{
+    int alive;
+    unsigned long startTime;
+    unsigned long passedTime;
+    int iterations = 0;
+    do {
+        alive = 0;
+        for (Bug *bug: bugs)
+        {
+            if (bug->getStatus())
+                alive++;
+        }
+        startTime = _pthread_time_in_ms();
+        passedTime = 0;
+        while(passedTime < 10)
+        {
+            passedTime = _pthread_time_in_ms() - startTime;
+        }
+
+        tapBoard();
+        displayHistoryAll();
+
+    } while(alive > 1 && ++iterations < 100);
+
+    endSimulation();
+    cout << "Simulation over, results saved" << endl;
+}

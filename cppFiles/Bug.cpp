@@ -15,10 +15,6 @@ Bug::Bug(string type, int id, int x, int y, Bug::Direction direction, int size) 
     this->diedTo = -1;
 }
 
-bool Bug::isWayBlocked() {
-    return false;
-}
-
 string Bug::getType() const
 {
     return this->type;
@@ -113,25 +109,13 @@ pair<pair<int, int>, int> Bug::calculateNewPosition(const int deltaForward) {
 }
 
 bool Bug::bugCompare(Bug* bug1, Bug* bug2) {
-    if(bug1->getPosition() < bug2->getPosition())
+    if(bug1->getPosition() != bug2->getPosition())
     {
-        return true;
-    }
-    else if(bug1->getPosition() > bug2->getPosition())
-    {
-        return false;
-    }
-    else if(bug1->getSize() < bug2->getSize())
-    {
-        return false;
-    }
-    else if(bug1->getSize() > bug2->getSize())
-    {
-        return true;
+        return bug1->getPosition() < bug2->getPosition();
     }
     else
     {
-        return (rand()%2 == 0);
+        return bug1->getSize() > bug2->getSize();
     }
 }
 
@@ -141,4 +125,12 @@ void Bug::killBug(Bug &food) {
     food.setStatus(false);
     food.setDiedTo(this->id);
     this->size += food.getSize();
+}
+
+void Bug::letBugDoBugThing() {
+    if(alive)
+    {
+        move();
+        path.push_back(position);
+    }
 }

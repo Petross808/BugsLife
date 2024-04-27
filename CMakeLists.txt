@@ -13,4 +13,6 @@ add_executable(BugsLife cppFiles/main.cpp
         cppFiles/Board.cpp
         headerFiles/Board.h
         cppFiles/BugFactory.cpp
-        headerFiles/BugFactory.h)
+        headerFiles/BugFactory.h
+        cppFiles/Ant.cpp
+        headerFiles/Ant.h)

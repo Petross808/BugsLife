@@ -23,7 +23,7 @@ public:
     void setDiedTo(int id);
     virtual string getOutputString() const;
     friend std::ostream& operator<<(std::ostream& out, const Bug& bug);
-
+    void letBugDoBugThing();
     virtual void move() = 0;
     string getHistory() const;
     void killBug(Bug& food);
@@ -39,7 +39,6 @@ protected:
     bool alive;
     list<pair<int, int>> path;
     int diedTo;
-    bool isWayBlocked();
     pair<pair<int, int>,int> calculateNewPosition(int deltaForward);
 };
 

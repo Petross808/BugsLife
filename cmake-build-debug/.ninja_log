@@ -1,13 +1,9 @@
 # ninja log v5
-3	549	7359351480051621	CMakeFiles/BugsLife.dir/cppFiles/Board.cpp.obj	43a80917f3c636d5
-5	196	7349763087574421	build.ninja	f2e1daf41cf48331
-550	675	7359351481261617	BugsLife.exe	64e3bca6587d35ec
-3	600	7359343862581861	CMakeFiles/BugsLife.dir/cppFiles/main.cpp.obj	1114d77667fdd168
-29	839	7351549486488668	CMakeFiles/BugsLife.dir/cppFiles/Hopper.cpp.obj	67fdb693d599f15b
-4	669	7351549484777632	CMakeFiles/BugsLife.dir/cppFiles/Crawler.cpp.obj	ebac8f446aa4cf3b
-12	932	7351549487410376	CMakeFiles/BugsLife.dir/cppFiles/Bug.cpp.obj	efec26838f5b14aa
-37	999	7351549488081744	CMakeFiles/BugsLife.dir/cppFiles/BugFactory.cpp.obj	39c0b547a55cd714
-3	410	7359352450565090	CMakeFiles/BugsLife.dir/cppFiles/Bug.cpp.obj	efec26838f5b14aa
-411	526	7359352451685082	BugsLife.exe	64e3bca6587d35ec
-2	465	7359353030232285	CMakeFiles/BugsLife.dir/cppFiles/Board.cpp.obj	43a80917f3c636d5
-466	582	7359353031357542	BugsLife.exe	64e3bca6587d35ec
+2	451	7359430664333065	CMakeFiles/BugsLife.dir/cppFiles/Board.cpp.obj	43a80917f3c636d5
+5	196	7359439541715430	build.ninja	f2e1daf41cf48331
+451	569	7359430665478351	BugsLife.exe	64e3bca6587d35ec
+15	539	7359394241098080	CMakeFiles/BugsLife.dir/cppFiles/main.cpp.obj	1114d77667fdd168
+26	457	7359394240269467	CMakeFiles/BugsLife.dir/cppFiles/Hopper.cpp.obj	67fdb693d599f15b
+9	338	7359394239070123	CMakeFiles/BugsLife.dir/cppFiles/Crawler.cpp.obj	ebac8f446aa4cf3b
+3	403	7359430013311557	CMakeFiles/BugsLife.dir/cppFiles/Bug.cpp.obj	efec26838f5b14aa
+20	536	7359394241058056	CMakeFiles/BugsLife.dir/cppFiles/BugFactory.cpp.obj	39c0b547a55cd714

@@ -6,9 +6,6 @@
 #define BUGSLIFE_BUGFACTORY_H
 
 #include "Bug.h"
-#include "Crawler.h"
-#include "Hopper.h"
-#include "string"
 
 class BugFactory {
 public:

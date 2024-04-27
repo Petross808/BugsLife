@@ -3,9 +3,11 @@
 //
 
 #include <sstream>
+#include <vector>
 #include "../headerFiles/BugFactory.h"
-#include "vector"
-#include "iostream"
+#include "../headerFiles/Crawler.h"
+#include "../headerFiles/Hopper.h"
+#include "../headerFiles/Ant.h"
 
 Bug* BugFactory::createBug(std::string &bugRecord) {
     stringstream splitter (bugRecord);
@@ -27,6 +29,10 @@ Bug* BugFactory::createBug(std::string &bugRecord) {
     else if (splitString[0] == "H") {
         int hopLength = stoi(splitString[6]);
         return new Hopper("Hopper", id, x, y, Bug::Direction(dir - 1), size, hopLength);
+    }
+    else if(splitString[0] == "A")
+    {
+        return new Ant("Ant", id, x, y, Bug::Direction(dir - 1), size);
     }
 
 
