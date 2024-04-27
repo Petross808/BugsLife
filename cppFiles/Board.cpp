@@ -14,8 +14,11 @@ void Board::loadBugs(const string& filePath) {
     {
         string bugRecord;
         getline(in, bugRecord);
-        Bug* newBug = BugFactory::createBug(bugRecord);
-        this->bugs.push_back(newBug);
+        if(!bugRecord.empty())
+        {
+            Bug* newBug = BugFactory::createBug(bugRecord);
+            this->bugs.push_back(newBug);
+        }
     }
     in.close();
 }
@@ -120,22 +123,13 @@ void Board::displayAllCells() {
 void Board::runSimulation()
 {
     int alive;
-    unsigned long startTime;
-    unsigned long passedTime;
+    unsigned long long startTime;
     int iterations = 0;
     do {
-        alive = 0;
-        for (Bug *bug: bugs)
-        {
-            if (bug->getStatus())
-                alive++;
-        }
+        alive = getAliveAmount();
         startTime = _pthread_time_in_ms();
-        passedTime = 0;
-        while(passedTime < 10)
-        {
-            passedTime = _pthread_time_in_ms() - startTime;
-        }
+
+        while(_pthread_time_in_ms() - startTime < 1000);
 
         tapBoard();
         displayHistoryAll();
@@ -144,4 +138,26 @@ void Board::runSimulation()
 
     endSimulation();
     cout << "Simulation over, results saved" << endl;
+}
+
+int Board::getAliveAmount() const
+{
+    int alive = 0;
+    for (Bug *bug: bugs)
+    {
+        if (bug->getStatus())
+            alive++;
+    }
+    return alive;
+}
+
+list<pair<string, pair<int, int>>> Board::getAliveBugPositions() const
+{
+    list<pair<string, pair<int, int>>> out;
+    for(Bug* bug : bugs)
+    {
+        if(bug->getStatus())
+            out.emplace_back(bug->getType(),bug->getPosition());
+    }
+    return out;
 }

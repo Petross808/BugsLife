@@ -22,6 +22,8 @@ public:
     void runSimulation();
     void endSimulation();
     void displayAllCells();
+    int getAliveAmount() const;
+    list<pair<string,pair<int,int>>> getAliveBugPositions() const;
 };
 
 

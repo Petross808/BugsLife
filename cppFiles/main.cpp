@@ -1,16 +1,16 @@
 #include <iostream>
+#include <algorithm>
 #include "../headerFiles/Board.h"
-#include "algorithm"
+#include "../headerFiles/GuiSimulation.h"
 
 int parseInt(const string& str);
 
 int main() {
     srand(time(nullptr));
     Board board;
+    GuiSimulation guiSimulation(&board);
     string cache;
-
     bool running = true;
-
     while(running)
     {
         cout << "\nMenu\n"
@@ -21,7 +21,8 @@ int main() {
                 "5. Display Life History of all Bugs (path taken)\n"
                 "6. Display all Cells listing their Bugs\n"
                 "7. Run simulation (generates a Tap every second)\n"
-                "8. Exit (write Life History of all Bugs to file)\n"
+                "8. Run simulation with GuiSimulation (generates a Tap every second)\n"
+                "9. Exit (write Life History of all Bugs to file)\n"
                 "Input:";
 
         cin >> cache;
@@ -56,6 +57,9 @@ int main() {
                 board.runSimulation();
                 break;
             case 8:
+                guiSimulation.start();
+                break;
+            case 9:
                 running = false;
                 board.endSimulation();
                 cout << "Bug history saved to a file...\nGoodbye!" << endl;
