@@ -8,6 +8,7 @@
 #include "../headerFiles/Crawler.h"
 #include "../headerFiles/Hopper.h"
 #include "../headerFiles/Ant.h"
+#include "../headerFiles/SuperBug.h"
 
 Bug* BugFactory::createBug(std::string &bugRecord) {
     stringstream splitter (bugRecord);
@@ -34,6 +35,12 @@ Bug* BugFactory::createBug(std::string &bugRecord) {
     {
         return new Ant("Ant", id, x, y, Bug::Direction(dir - 1), size);
     }
-
-
+    else if(splitString[0] == "S")
+    {
+        return new SuperBug("Super", id, x, y, Bug::Direction(dir - 1), size);
+    }
+    else
+    {
+        return new Crawler("Crawler", id, x, y, Bug::Direction(dir - 1), size);
+    }
 }

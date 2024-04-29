@@ -21,7 +21,7 @@ int main() {
                 "5. Display Life History of all Bugs (path taken)\n"
                 "6. Display all Cells listing their Bugs\n"
                 "7. Run simulation (generates a Tap every second)\n"
-                "8. Run simulation with GuiSimulation (generates a Tap every second)\n"
+                "8. Run simulation with GUI\n"
                 "9. Exit (write Life History of all Bugs to file)\n"
                 "Input:";
 

@@ -17,7 +17,9 @@ add_executable(BugsLife cppFiles/main.cpp
         cppFiles/Ant.cpp
         headerFiles/Ant.h
         cppFiles/GuiSimulation.cpp
-        headerFiles/GuiSimulation.h)
+        headerFiles/GuiSimulation.h
+        cppFiles/SuperBug.cpp
+        headerFiles/SuperBug.h)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR C:/SFML-2.6.1/lib/cmake/SFML)

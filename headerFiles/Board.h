@@ -24,6 +24,7 @@ public:
     void displayAllCells();
     int getAliveAmount() const;
     list<pair<string,pair<int,int>>> getAliveBugPositions() const;
+    void moveSuperBug(Bug::Direction);
 };
 
 

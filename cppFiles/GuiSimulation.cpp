@@ -51,8 +51,33 @@ void GuiSimulation::handleEvents() {
     Event event{};
     while (window->pollEvent(event))
     {
-        if (event.type == sf::Event::Closed)
+        if (event.type == Event::Closed)
+        {
             window->close();
+        }
+        else if(event.type == Event::KeyReleased)
+        {
+            switch(event.key.code)
+            {
+                case Keyboard::Up:
+                    board->moveSuperBug(Bug::NORTH);
+                    break;
+                case Keyboard::Down:
+                    board->moveSuperBug(Bug::SOUTH);
+                    break;
+                case Keyboard::Left:
+                    board->moveSuperBug(Bug::WEST);
+                    break;
+                case Keyboard::Right:
+                    board->moveSuperBug(Bug::EAST);
+                    break;
+                case Keyboard::Escape:
+                    window->close();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
 

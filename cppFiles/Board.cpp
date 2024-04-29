@@ -7,6 +7,7 @@
 #include "fstream"
 #include "iostream"
 #include "algorithm"
+#include "../headerFiles/SuperBug.h"
 
 void Board::loadBugs(const string& filePath) {
     ifstream in(filePath);
@@ -122,6 +123,12 @@ void Board::displayAllCells() {
 
 void Board::runSimulation()
 {
+    SuperBug* super = SuperBug::getLastAddedSuperBug();
+    if(super)
+    {
+        super->setControlled(false);
+    }
+
     int alive;
     unsigned long long startTime;
     int iterations = 0;
@@ -160,4 +167,13 @@ list<pair<string, pair<int, int>>> Board::getAliveBugPositions() const
             out.emplace_back(bug->getType(),bug->getPosition());
     }
     return out;
+}
+
+void Board::moveSuperBug(Bug::Direction dir) {
+    SuperBug* super = SuperBug::getLastAddedSuperBug();
+    if(super && super->getStatus())
+    {
+        super->manualMove(dir);
+        evaluateFights();
+    }
 }

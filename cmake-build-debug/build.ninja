@@ -113,6 +113,14 @@ build CMakeFiles/BugsLife.dir/cppFiles/GuiSimulation.cpp.obj: CXX_COMPILER__Bugs
   OBJECT_DIR = CMakeFiles\BugsLife.dir
   OBJECT_FILE_DIR = CMakeFiles\BugsLife.dir\cppFiles
 
+build CMakeFiles/BugsLife.dir/cppFiles/SuperBug.cpp.obj: CXX_COMPILER__BugsLife_unscanned_Debug C$:/Users/petrs/CLionProjects/BugsLife/cppFiles/SuperBug.cpp || cmake_object_order_depends_target_BugsLife
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\BugsLife.dir\cppFiles\SuperBug.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -isystem C:/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles\BugsLife.dir
+  OBJECT_FILE_DIR = CMakeFiles\BugsLife.dir\cppFiles
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target BugsLife
@@ -121,7 +129,7 @@ build CMakeFiles/BugsLife.dir/cppFiles/GuiSimulation.cpp.obj: CXX_COMPILER__Bugs
 #############################################
 # Link the executable BugsLife.exe
 
-build BugsLife.exe: CXX_EXECUTABLE_LINKER__BugsLife_Debug CMakeFiles/BugsLife.dir/cppFiles/main.cpp.obj CMakeFiles/BugsLife.dir/cppFiles/Bug.cpp.obj CMakeFiles/BugsLife.dir/cppFiles/Crawler.cpp.obj CMakeFiles/BugsLife.dir/cppFiles/Hopper.cpp.obj CMakeFiles/BugsLife.dir/cppFiles/Board.cpp.obj CMakeFiles/BugsLife.dir/cppFiles/BugFactory.cpp.obj CMakeFiles/BugsLife.dir/cppFiles/Ant.cpp.obj CMakeFiles/BugsLife.dir/cppFiles/GuiSimulation.cpp.obj | C$:/SFML-2.6.1/lib/libsfml-system-s-d.a C$:/SFML-2.6.1/lib/libsfml-window-s-d.a C$:/SFML-2.6.1/lib/libsfml-graphics-s-d.a C$:/SFML-2.6.1/lib/libsfml-audio-s-d.a C$:/SFML-2.6.1/lib/libsfml-window-s-d.a C$:/SFML-2.6.1/lib/libfreetype.a C$:/SFML-2.6.1/lib/libsfml-system-s-d.a C$:/SFML-2.6.1/lib/libopenal32.a C$:/SFML-2.6.1/lib/libvorbisfile.a C$:/SFML-2.6.1/lib/libvorbisenc.a C$:/SFML-2.6.1/lib/libvorbis.a C$:/SFML-2.6.1/lib/libogg.a C$:/SFML-2.6.1/lib/libFLAC.a
+build BugsLife.exe: CXX_EXECUTABLE_LINKER__BugsLife_Debug CMakeFiles/BugsLife.dir/cppFiles/main.cpp.obj CMakeFiles/BugsLife.dir/cppFiles/Bug.cpp.obj CMakeFiles/BugsLife.dir/cppFiles/Crawler.cpp.obj CMakeFiles/BugsLife.dir/cppFiles/Hopper.cpp.obj CMakeFiles/BugsLife.dir/cppFiles/Board.cpp.obj CMakeFiles/BugsLife.dir/cppFiles/BugFactory.cpp.obj CMakeFiles/BugsLife.dir/cppFiles/Ant.cpp.obj CMakeFiles/BugsLife.dir/cppFiles/GuiSimulation.cpp.obj CMakeFiles/BugsLife.dir/cppFiles/SuperBug.cpp.obj | C$:/SFML-2.6.1/lib/libsfml-system-s-d.a C$:/SFML-2.6.1/lib/libsfml-window-s-d.a C$:/SFML-2.6.1/lib/libsfml-graphics-s-d.a C$:/SFML-2.6.1/lib/libsfml-audio-s-d.a C$:/SFML-2.6.1/lib/libsfml-window-s-d.a C$:/SFML-2.6.1/lib/libfreetype.a C$:/SFML-2.6.1/lib/libsfml-system-s-d.a C$:/SFML-2.6.1/lib/libopenal32.a C$:/SFML-2.6.1/lib/libvorbisfile.a C$:/SFML-2.6.1/lib/libvorbisenc.a C$:/SFML-2.6.1/lib/libvorbis.a C$:/SFML-2.6.1/lib/libogg.a C$:/SFML-2.6.1/lib/libFLAC.a
   FLAGS = -g
   LINK_LIBRARIES = C:/SFML-2.6.1/lib/libsfml-system-s-d.a  C:/SFML-2.6.1/lib/libsfml-window-s-d.a  C:/SFML-2.6.1/lib/libsfml-graphics-s-d.a  C:/SFML-2.6.1/lib/libsfml-audio-s-d.a  C:/SFML-2.6.1/lib/libsfml-window-s-d.a  -lOpenGL32  -lgdi32  C:/SFML-2.6.1/lib/libfreetype.a  C:/SFML-2.6.1/lib/libsfml-system-s-d.a  -lwinmm  C:/SFML-2.6.1/lib/libopenal32.a  C:/SFML-2.6.1/lib/libvorbisfile.a  C:/SFML-2.6.1/lib/libvorbisenc.a  C:/SFML-2.6.1/lib/libvorbis.a  C:/SFML-2.6.1/lib/libogg.a  C:/SFML-2.6.1/lib/libFLAC.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\BugsLife.dir
