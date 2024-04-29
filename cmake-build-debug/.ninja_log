@@ -29,3 +29,9 @@
 699	1169	7360861408687035	BugsLife.exe	c06d3c52b5cdfcf3
 4	835	7360865285360521	CMakeFiles/BugsLife.dir/cppFiles/GuiSimulation.cpp.obj	5acc864891c53a75
 835	1335	7360865290280232	BugsLife.exe	c06d3c52b5cdfcf3
+4	780	7360892658649893	CMakeFiles/BugsLife.dir/cppFiles/Board.cpp.obj	63d04e1e758385ed
+781	1307	7360892663834542	BugsLife.exe	c06d3c52b5cdfcf3
+4	737	7360893579115453	CMakeFiles/BugsLife.dir/cppFiles/main.cpp.obj	7e9e931a177abaec
+14	835	7360893580090898	CMakeFiles/BugsLife.dir/cppFiles/GuiSimulation.cpp.obj	5acc864891c53a75
+9	859	7360893580336176	CMakeFiles/BugsLife.dir/cppFiles/Board.cpp.obj	63d04e1e758385ed
+859	1378	7360893585433631	BugsLife.exe	c06d3c52b5cdfcf3

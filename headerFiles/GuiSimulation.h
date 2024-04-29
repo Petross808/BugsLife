@@ -32,7 +32,6 @@ private:
 
 public:
     explicit GuiSimulation(Board* board);
-    ~GuiSimulation();
     void start();
 };
 

@@ -17,10 +17,6 @@ GuiSimulation::GuiSimulation(Board* bugBoard) {
     initBackground();
 }
 
-GuiSimulation::~GuiSimulation() {
-    delete window;
-}
-
 void GuiSimulation::initBackground()
 {
     for(int y = 0; y < 10; y++)
