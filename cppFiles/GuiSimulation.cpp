@@ -8,10 +8,12 @@
 GuiSimulation::GuiSimulation(Board* bugBoard) {
     window = nullptr;
     board = bugBoard;
-    aliveBugs = board->getAliveAmount();
+    aliveBugs = 0;
     startTime = 0;
     iterations = 0;
     simulationOver = false;
+
+    font.loadFromFile("../Assets/arial.ttf");
     initBackground();
 }
 
@@ -38,6 +40,10 @@ void GuiSimulation::initBackground()
 void GuiSimulation::start() {
     window = new RenderWindow(VideoMode(600,600), "Bug's Life");
     window->setFramerateLimit(30);
+    aliveBugs = board->getAliveAmount();
+    startTime = 0;
+    iterations = 0;
+    simulationOver = false;
 
     while (window->isOpen())
     {
@@ -45,6 +51,8 @@ void GuiSimulation::start() {
         handleSimulation();
         drawGui();
     }
+
+    delete window;
 }
 
 void GuiSimulation::handleEvents() {
@@ -57,6 +65,10 @@ void GuiSimulation::handleEvents() {
         }
         else if(event.type == Event::KeyReleased)
         {
+            if(simulationOver)
+            {
+                continue;
+            }
             switch(event.key.code)
             {
                 case Keyboard::Up:
@@ -88,7 +100,7 @@ void GuiSimulation::handleSimulation() {
         board->tapBoard();
         aliveBugs = board->getAliveAmount();
         iterations++;
-        if(iterations > 100)
+        if(iterations > 100 || aliveBugs <= 1)
         {
             simulationOver = true;
         }
@@ -103,32 +115,67 @@ void GuiSimulation::drawGui() {
         window->draw(tile);
     }
 
-    auto bugs = board->getAliveBugPositions();
+    auto bugs = board->getAliveBugShapes();
     for(auto &bug : bugs)
     {
-        drawBug(bug.first, bug.second);
+        drawBug(bug);
+    }
+
+    if(simulationOver)
+    {
+        drawRectangle(300,100,150,250,Color::White);
+        drawText("Simulation over",300,280,32);
+        drawText("You may close the window",300,320,20);
     }
 
     window->display();
 }
 
-void GuiSimulation::drawBug(std::string &name, pair<int, int> &position) {
-    CircleShape bug(20);
-    if(name == "Crawler")
+void GuiSimulation::drawBug(const BugShape &bugShape) {
+    Sprite bug;
+    bug.setTexture(bugShape.texture);
+    bug.setPosition(50 + bugShape.position.first * 50,50 + bugShape.position.second * 50);
+    switch(bugShape.dir)
     {
-        bug.setFillColor(Color::Yellow);
+        case Bug::NORTH:
+            bug.setRotation(0);
+            break;
+        case Bug::SOUTH:
+            bug.setRotation(180);
+            bug.move(50,50);
+            break;
+        case Bug::EAST:
+            bug.setRotation(90);
+            bug.move(50,0);
+            break;
+        case Bug::WEST:
+            bug.setRotation(270);
+            bug.move(0,50);
+            break;
     }
-    else if(name == "Hopper")
-    {
-        bug.setFillColor(Color::Red);
-    }
-    else if(name == "Ant")
-    {
-        bug.setFillColor(Color::Green);
-    }
-    bug.setPosition(55 + position.first * 50,55 + position.second * 50);
-    bug.setOutlineColor(Color::Black);
-    bug.setOutlineThickness(1);
     window->draw(bug);
+    drawText(to_string(bugShape.size), 55 + bugShape.position.first * 50, 55 + bugShape.position.second * 50, 12);
+}
+
+void GuiSimulation::drawText(string text, int x, int y, int size)
+{
+    Text textObject;
+    textObject.setString(text);
+    textObject.setFont(font);
+    textObject.setCharacterSize(size);
+    textObject.setStyle(Text::Bold);
+    textObject.setFillColor(Color::Black);
+    textObject.setPosition(x - textObject.getLocalBounds().width/2, y - textObject.getLocalBounds().height/2);
+    window->draw(textObject);
+}
+
+void GuiSimulation::drawRectangle(int sizeX, int sizeY, int posX, int posY, Color color)
+{
+    RectangleShape panel(Vector2f(sizeX,sizeY));
+    panel.setFillColor(color);
+    panel.setPosition(posX,posY);
+    panel.setOutlineColor(Color::Black);
+    panel.setOutlineThickness(1);
+    window->draw(panel);
 }
 

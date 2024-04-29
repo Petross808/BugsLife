@@ -18,8 +18,11 @@ private:
     void handleEvents();
     void handleSimulation();
     void drawGui();
-    void drawBug(string &name, pair<int, int> &position);
+    void drawBug(const BugShape&);
+    void drawRectangle(int, int, int, int, Color);
+    void drawText(string text, int x, int y, int size);
 
+    Font font;
     int aliveBugs;
     unsigned long long startTime;
     int iterations;

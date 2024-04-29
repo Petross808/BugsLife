@@ -8,6 +8,7 @@
 #include "Bug.h"
 #include "string"
 #include "vector"
+#include "BugShape.h"
 
 class Board {
 private:
@@ -23,7 +24,7 @@ public:
     void endSimulation();
     void displayAllCells();
     int getAliveAmount() const;
-    list<pair<string,pair<int,int>>> getAliveBugPositions() const;
+    list<BugShape> getAliveBugShapes() const;
     void moveSuperBug(Bug::Direction);
 };
 

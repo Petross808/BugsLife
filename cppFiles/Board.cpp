@@ -158,13 +158,19 @@ int Board::getAliveAmount() const
     return alive;
 }
 
-list<pair<string, pair<int, int>>> Board::getAliveBugPositions() const
+list<BugShape> Board::getAliveBugShapes() const
 {
-    list<pair<string, pair<int, int>>> out;
+    list<BugShape> out;
     for(Bug* bug : bugs)
     {
-        if(bug->getStatus())
-            out.emplace_back(bug->getType(),bug->getPosition());
+        if(bug->getStatus()) {
+            BugShape newShape;
+            newShape.setTexture(bug->getType());
+            newShape.position = bug->getPosition();
+            newShape.size = bug->getSize();
+            newShape.dir = bug->getDirection();
+            out.push_back(newShape);
+        }
     }
     return out;
 }
